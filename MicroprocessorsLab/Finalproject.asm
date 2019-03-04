@@ -182,7 +182,7 @@ inputcheck
 	
 	
 	
-LCG  ; x_n+1 = (a*x_n + c) mod m
+LCG  ; x_n+1 = (a*x_n + b) mod m
 	movlw	0x05	    ; set conv_count to 0
 	movwf	conv_count
 	
@@ -194,7 +194,7 @@ LCG  ; x_n+1 = (a*x_n + c) mod m
 	mulwf	x_n	;a * current x_n
 	movff	PRODL, lowb ;move both  8 bit numbers from prod registers to file registers
 	movff	PRODH, highb
-	movlw	0x01 ;c to be added
+	movlw	0x01 ;b to be added
 	addwf	lowb ; adds
 	movff	lowb,rawranno ;moves last 8  bits of multiplication into register usd by moulo
 	call	modulo2

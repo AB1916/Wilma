@@ -203,7 +203,7 @@ LCG  ; x_n+1 = (a*x_n + c) mod m
 	call	modulo
 	
 	
-	movlw	0x00	; sets port f to not tri state
+	movlw	0x00	; sets PORTE to not tri state
 	movwf	TRISE
 	
 	movlw	0x01
@@ -222,14 +222,14 @@ LCG  ; x_n+1 = (a*x_n + c) mod m
 	tstfsz	zero
 	call	LEDthree  ; if random number is 3 call LEDthree
 	
-	movff	randno, PORTE ; moves random number to PORTF
+	movff	randno, PORTE ; moves random number to PORTE
 	
 	movf	delayno,0	;  cycles of delay 
 	movwf	delay_count
 	call	delay	;delays caled
 	
 	
-	movlw	0xFF; resets PORTF
+	movlw	0xFF; resets PORTE
 	movwf	PORTE
 	
 
